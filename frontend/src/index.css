@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-er-bg: #0d0d0f;
+	--color-er-panel: #1a1a1f;
+	--color-er-gold: #c9a227;
+	--color-er-copper: #8b6914;
+	--font-display: 'Cinzel', 'Times New Roman', serif;
+}
