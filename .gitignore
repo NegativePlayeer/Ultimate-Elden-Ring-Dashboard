@@ -1,0 +1,5 @@
+backend/__pycache__/
+*.pyc
+backend/tempCodeRunnerFile.py
+node_modules/
+frontend/dist
