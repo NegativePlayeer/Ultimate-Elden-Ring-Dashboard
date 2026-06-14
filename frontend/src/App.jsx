@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Header from './components/Header';
+import AboutModal from './components/AboutModal';
 import HealthCheck from './components/HealthCheck';
 import TabNav from './components/TabNav';
 import CategoryFilter from './components/CategoryFilter';
@@ -15,15 +16,18 @@ import ReqBoxPlot from './components/ReqBoxPlot';
 function App() {
 	const [tab, setTab] = useState('armory');
 	const [category, setCategory] = useState('All');
-	const [selectedWeapon, setSelectedWeapon] =
-		useState(null);
+	const [selectedWeapon, setSelectedWeapon] = useState(null);
 	const [maxWeight, setMaxWeight] = useState(30);
-	const [magicSchool, setMagicSchool] =
-		useState('sorceries');
+	const [magicSchool, setMagicSchool] = useState('sorceries');
+	
+	// State to track if the About / Help modal is visible
+	const [isAboutOpen, setIsAboutOpen] = useState(false);
 
 	return (
 		<div className='min-h-screen bg-er-bg text-gray-200 p-6'>
-			<Header />
+			{/* Pass down the trigger function to the Header prop */}
+			<Header onAboutClick={() => setIsAboutOpen(true)} />
+			
 			<HealthCheck />
 			<TabNav activeTab={tab} onTabChange={setTab} />
 
@@ -110,6 +114,12 @@ function App() {
 					</div>
 				</div>
 			)}
+
+			{/* Render the modal at the bottom of the component hierarchy */}
+			<AboutModal 
+				open={isAboutOpen} 
+				onClose={() => setIsAboutOpen(false)} 
+			/>
 		</div>
 	);
 }
