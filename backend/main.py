@@ -13,7 +13,12 @@ app = FastAPI(title="Elden Ring Ultimate Build Crafter API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://ultimate-elden-ring-dashboard.onrender.com"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://ultimate-elden-ring-dashboard.onrender.com",
+    ],
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
